@@ -120,20 +120,3 @@ pm_xml <- lapply(my.seq, (function(ret.start){
 }))
 
 #######################################################
-# I'm struggling a bit with the processing, and this is where the code stops working...
-
-# Here, I'm trying to follow this example - https://rdrr.io/cran/easyPubMed/f/vignettes/getting_started_with_easyPubMed.Rmd
-# And using the text files from above
-# I'm just not sure what all we want here, and how to proceed with this version
-new_PM_file <- pm_text[[1]] # for some reason the example seems to proceed one file at a time, rather than pulling them together
-listed_articles <- articles_to_list(pubmed_data = new_PM_file)
-custom_grep(listed_articles[[2]], "ArticleTitle", "char")
-
-
-# Here, I'm trying to follow this example - http://www.biotechworld.it/bioinf/2016/01/21/scraping-pubmed-data-via-easypubmed-xml-and-regex-in-r-for-a-targeting-campaign/
-# And using the R object versions from above
-# It's erroring in that there are some non-character entries in the xml results
-record.list <- easyPubMed::articles_to_list(pm_xml)
-tmp.record <- article_to_df(pubmedArticle = record.list[[1]], 
-                            autofill = TRUE,                     # impute NA affiliations
-                            max_chars = 1500)                   
